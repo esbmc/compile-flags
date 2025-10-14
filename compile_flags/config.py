@@ -2,11 +2,13 @@
 #
 # SPDX-License-Identifier: AGPL-3.0
 
+"""Handles loading from command line args."""
+
 import logging
 import sys
 
 import structlog
-from pydantic import AliasChoices, Field, PrivateAttr, computed_field
+from pydantic import AliasChoices, Field, computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
