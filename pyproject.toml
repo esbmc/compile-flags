@@ -21,6 +21,7 @@ classifiers = [
 ]
 dependencies = [
   "pydantic-settings",
+  "structlog",
 ]
 
 [project.scripts]
@@ -35,7 +36,7 @@ Source = "https://github.com/esbmc/compile-flags"
 path = "compile_flags/__about__.py"
 
 [tool.hatch.envs.default.scripts]
-compile-flags = "python -m compile_flags"
+compile-flags = "python -m compile_flags {args}"
 
 [tool.hatch.envs.types]
 extra-dependencies = [
