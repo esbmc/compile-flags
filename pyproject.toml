@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "compile-flags"
+dynamic = ["version"]
+description = 'Multi-language compilation flags detector tool.'
+readme = "README.md"
+requires-python = ">=3.12"
+license = "AGPL-3.0"
+keywords = []
+authors = [
+  { name = "Yiannis Charalambous", email = "yiannis128@hotmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "pydantic-settings",
+]
+
+[project.scripts]
+compile-flags = "compile_flags.__main__:main"
+
+[project.urls]
+Documentation = "https://github.com/Yiannis128/compile-flags#readme"
+Issues = "https://github.com/Yiannis128/compile-flags/issues"
+Source = "https://github.com/Yiannis128/compile-flags"
+
+[tool.hatch.version]
+path = "compile_flags/__about__.py"
+
+[tool.hatch.envs.default.scripts]
+compile-flags = "python -m compile_flags"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/compile_flags tests}"
+
+[tool.coverage.run]
+source_pkgs = ["compile_flags", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/compile_flags/__about__.py",
+]
+
+[tool.coverage.paths]
+compile_flags = ["src/compile_flags", "*/compile-flags/src/compile_flags"]
+tests = ["tests", "*/compile-flags/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
