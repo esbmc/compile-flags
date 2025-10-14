@@ -12,6 +12,7 @@ license = "AGPL-3.0"
 keywords = []
 authors = [
   { name = "Yiannis Charalambous", email = "yiannis128@hotmail.com" },
+  { name = "Rafael Sá Menezes", email = "rafael.sa.menezes@outlook.com" },
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -26,9 +27,9 @@ dependencies = [
 compile-flags = "compile_flags.__main__:main"
 
 [project.urls]
-Documentation = "https://github.com/Yiannis128/compile-flags#readme"
-Issues = "https://github.com/Yiannis128/compile-flags/issues"
-Source = "https://github.com/Yiannis128/compile-flags"
+Documentation = "https://github.com/esbmc/compile-flags#readme"
+Issues = "https://github.com/esbmc/compile-flags/issues"
+Source = "https://github.com/esbmc/compile-flags"
 
 [tool.hatch.version]
 path = "compile_flags/__about__.py"
