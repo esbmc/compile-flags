@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: AGPL-3.0
 
-"""Contains information about the program."""
+"""Dummy test file until we get some actual tests."""
 
-__version__ = "0.0.1"
+
+def test_dummy() -> None:
+    assert 1

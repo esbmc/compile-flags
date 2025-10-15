@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0
 
+"""Entry point of compile-flags."""
+
 import argparse
 import logging
-import sys
 
 import structlog
 from pydantic_settings import CliApp, CliSettingsSource

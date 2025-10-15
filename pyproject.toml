@@ -19,10 +19,7 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.12",
 ]
-dependencies = [
-  "pydantic-settings",
-  "structlog",
-]
+dependencies = ["pydantic-settings", "structlog"]
 
 [project.scripts]
 compile-flags = "compile_flags.__main__:main"
@@ -35,13 +32,14 @@ Source = "https://github.com/esbmc/compile-flags"
 [tool.hatch.version]
 path = "compile_flags/__about__.py"
 
+[tool.hatch.envs.default]
+extra-dependencies = ["pylint"]
+
 [tool.hatch.envs.default.scripts]
 compile-flags = "python -m compile_flags {args}"
 
 [tool.hatch.envs.types]
-extra-dependencies = [
-  "mypy>=1.0.0",
-]
+extra-dependencies = ["mypy>=1.0.0"]
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/compile_flags tests}"
 
@@ -49,18 +47,11 @@ check = "mypy --install-types --non-interactive {args:src/compile_flags tests}"
 source_pkgs = ["compile_flags", "tests"]
 branch = true
 parallel = true
-omit = [
-  "src/compile_flags/__about__.py",
-]
+omit = ["src/compile_flags/__about__.py"]
 
 [tool.coverage.paths]
 compile_flags = ["src/compile_flags", "*/compile-flags/src/compile_flags"]
 tests = ["tests", "*/compile-flags/tests"]
 
 [tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
-
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]

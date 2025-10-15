@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: AGPL-3.0
 
+"""Handles loading from command line args."""
+
 import logging
 import os
 from pathlib import Path
