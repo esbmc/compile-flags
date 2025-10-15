@@ -3,10 +3,12 @@
 # SPDX-License-Identifier: AGPL-3.0
 
 import logging
+import os
+from pathlib import Path
 import sys
 
 import structlog
-from pydantic import AliasChoices, Field, PrivateAttr, computed_field
+from pydantic import AliasChoices, DirectoryPath, Field, FilePath, PrivateAttr, computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -67,7 +69,7 @@ class Config(BaseSettings):
         cli_parse_args=True,
     )
 
-    output_file: str | None = Field(
+    output_file: FilePath | None = Field(
         default=None,
         validation_alias=_alias_choice("output_file"),
         description="Output file path for compilation flags",
@@ -76,11 +78,12 @@ class Config(BaseSettings):
     language: str | None = Field(
         default=None,
         validation_alias=_alias_choice("language"),
-        description="Programming language to detect flags for (e.g., c, cpp, rust)",
+        description="Programming language to detect flags for "
+        "(e.g., c, cpp, rust). Will try and automatically detect if unspecified",
     )
 
-    build_dir: str = Field(
-        default=".",
+    build_dir: DirectoryPath = Field(
+        default=Path(os.getcwd()),
         validation_alias=_alias_choice("build_dir"),
         description="Build directory to analyze",
     )
@@ -96,3 +99,4 @@ class Config(BaseSettings):
     def log_level_name(self) -> str:
         """The current log level name."""
         return logging.getLevelName(self.log_level)
+
