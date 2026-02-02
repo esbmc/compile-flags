@@ -2,4 +2,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0
 
-__version__ = "0.0.1"
+from .base_parser import BaseSolutionParser, CLikeParser
+
+__all__ = [
+    "BaseSolutionParser",
+    "CLikeParser",
+]
